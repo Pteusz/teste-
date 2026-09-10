@@ -4,10 +4,18 @@ from pathlib import Path
 from typing import Optional
 
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 
 OUTPUT_DIR = Path(os.environ.get("SCRAPER_OUTPUT_DIR", "/data/saidas"))
 
 app = FastAPI(title="khoral scrap API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["GET"],
+    allow_headers=["*"],
+)
 
 
 def _site_file(site: str) -> Path:
