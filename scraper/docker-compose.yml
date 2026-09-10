@@ -1,0 +1,18 @@
+services:
+  khoral-scrap-api:
+    build: ./api
+    container_name: khoral-scrap-api
+    restart: unless-stopped
+    volumes:
+      # ATENÇÃO: aponte para a pasta onde os .jsonl realmente ficam.
+      # Você relatou uma pasta "saida" duplicada dentro de "saida" —
+      # confirme o caminho certo na VPS antes de subir (ex: ./saidas/saida)
+      - ./saidas:/data/saidas:ro
+    environment:
+      - SCRAPER_OUTPUT_DIR=/data/saidas
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
