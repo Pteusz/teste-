@@ -45,3 +45,18 @@ Cada item extraído sai com três campos extras: `_source_site`,
 `AUTOTHROTTLE` ligado e um `DOWNLOAD_DELAY` de 1s por padrão — desative
 essas proteções só se souber exatamente o que está fazendo e tiver
 permissão para isso no site em questão.
+
+## Consultando os dados via API
+
+Os resultados salvos em `saidas/saidas/*.jsonl` ficam disponíveis publicamente em:
+
+```
+https://scrap.khoral.com.br
+```
+
+```bash
+curl https://scrap.khoral.com.br/sites
+curl "https://scrap.khoral.com.br/sites/netflix?limit=5"
+```
+
+Detalhes completos dos endpoints, parâmetros e como rodar/atualizar a API em `api/README.md`.
