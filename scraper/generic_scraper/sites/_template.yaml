@@ -1,0 +1,39 @@
+# Template de configuração de um site. Copie para <nome>.yaml e preencha.
+#
+# Só adicione sites que você tem permissão/direito de raspar (dados
+# públicos próprios, APIs abertas, ou termos de uso que permitam).
+# Verifique sempre o robots.txt e os Termos de Uso antes de rodar.
+
+name: nome_do_site               # identificador livre, vai no campo _source_site
+
+allowed_domains:
+  - "exemplo.com"
+
+start_urls:
+  - "https://exemplo.com/categoria"
+
+# Seletor CSS que identifica CADA card/item na listagem.
+item_selector: "a.item-card"
+
+# Campos a extrair de dentro de cada item_selector.
+# Cada campo pode ser:
+#   - uma string simples: seletor CSS relativo ao item
+#   - um dict com opções: selector / multiple / strip / join_with
+fields:
+  link:
+    selector: "::attr(href)"
+  imagem:
+    selector: "img::attr(src)"
+  titulo:
+    selector: "h3::text"
+  info_extra:
+    selector: ".item-info span::text"
+
+# Seletor CSS do link "próxima página". A spider segue esse link
+# repetidamente até ele não existir mais (fim da paginação) ou até
+# max_pages ser atingido.
+pagination_selector: "a.next-page::attr(href)"
+
+# 0 = sem limite, segue até acabar a paginação. Também pode ser
+# sobrescrito na linha de comando com -a max_pages=N.
+max_pages: 0

@@ -1,0 +1,27 @@
+# Exemplo funcional. books.toscrape.com é um site público criado pela
+# Zyte/Scrapinghub especificamente para servir de sandbox de testes de
+# scraper — pode raspar à vontade.
+
+name: example_books
+
+allowed_domains:
+  - "books.toscrape.com"
+
+start_urls:
+  - "https://books.toscrape.com/"
+
+item_selector: "article.product_pod"
+
+fields:
+  titulo:
+    selector: "h3 a::attr(title)"
+  link:
+    selector: "h3 a::attr(href)"
+  preco:
+    selector: "p.price_color::text"
+  disponibilidade:
+    selector: "p.instock.availability::text"
+
+pagination_selector: "li.next a::attr(href)"
+
+max_pages: 0
